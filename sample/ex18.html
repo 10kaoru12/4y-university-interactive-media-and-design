@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    var inputDate = [];
+    function myFunc1() {
+      inputDate.push(1);
+      document.querySelector("#draw").textContent = inputDate;
+    }
+    function myFunc2() {
+      inputDate.push(2);
+      document.querySelector("#draw").textContent = inputDate;
+    }
+    function output() {
+      var blob = new Blob([inputDate],{type:"text/plane"});
+      var link = document.createElement('a');
+      var fileNmae = "data.txt";
+      link.href = URL.createObjectURL(blob);
+      link.download = fileNmae;
+      link.click();
+    }
+  </script>
+</head>
+<body>
+  <button onclick="myFunc1()">1を入力</button>
+  <button onclick="myFunc2()">2を入力</button>
+  <button onclick="output()">データを出力</button>
+  <div id="draw" >初期状態</div>
+</body>
+</html>
